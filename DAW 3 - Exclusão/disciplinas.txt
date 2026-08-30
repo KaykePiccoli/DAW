@@ -1,0 +1,4 @@
+nome;sigla;carga
+Matemática;MAT;60
+Programação;PROG;80
+Banco de Dados;BD;60
