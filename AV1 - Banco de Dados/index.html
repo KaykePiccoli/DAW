@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sistema de Perguntas e Respostas</title>
+
+    <style>
+    body { font-family: Arial, sans-serif; max-width: 850px; margin: 24px auto; padding: 0 12px; }
+    nav button { margin: 4px; }
+    section { margin-top: 20px; }
+    input, textarea { display: block; margin: 6px 0 12px; width: 95%; max-width: 550px; }
+    textarea { height: 65px; }
+    article { border-bottom: 1px solid #ccc; padding: 10px 0; }
+    .opcao { display: flex; align-items: center; gap: 8px; }
+    .opcao input[type="radio"] { width: auto; margin: 0; }
+    .opcao input[type="text"] { margin: 4px 0; }
+    button { cursor: pointer; margin-right: 5px; }
+  </style>
+  
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <h1>Sistema de Perguntas e Respostas</h1>
+
+  <nav>
+    <button type="button" onclick="mostrar('usuarios')">Usuários</button>
+    <button type="button" onclick="mostrar('me')">Múltipla escolha</button>
+    <button type="button" onclick="mostrar('texto')">Dissertativas</button>
+  </nav>
+
+  <p id="mensagem" role="status"></p>
+
+  <section id="usuarios">
+    <h2>Gerenciar usuários</h2>
+
+    <form id="formUsuario">
+      <input type="hidden" name="id">
+
+      <label>Nome
+        <input name="nome" required>
+      </label>
+
+      <label>E-mail
+        <input name="email" type="email" required>
+      </label>
+
+      <button>Salvar usuário</button>
+      <button type="button" onclick="limpar('formUsuario')">Cancelar edição</button>
+    </form>
+
+    <div id="listaUsuarios"></div>
+  </section>
+
+  <section id="me" hidden>
+    <h2>Perguntas de múltipla escolha</h2>
+
+    <form id="formME">
+      <input type="hidden" name="id">
+
+      <label>Enunciado
+        <textarea name="enunciado" required></textarea>
+      </label>
+
+      <p>Marque a alternativa correta (no mínimo duas alternativas preenchidas):</p>
+
+      <div id="alternativas"></div>
+
+      <button>Salvar pergunta</button>
+      <button type="button" onclick="limpar('formME')">Cancelar edição</button>
+    </form>
+
+    <div id="listaME"></div>
+  </section>
+
+  <section id="texto" hidden>
+    <h2>Perguntas dissertativas</h2>
+
+    <form id="formTexto">
+      <input type="hidden" name="id">
+
+      <label>Enunciado
+        <textarea name="enunciado" required></textarea>
+      </label>
+
+      <label>Gabarito
+        <textarea name="gabarito" required></textarea>
+      </label>
+
+      <button>Salvar pergunta</button>
+      <button type="button" onclick="limpar('formTexto')">Cancelar edição</button>
+    </form>
+
+    <div id="listaTexto"></div>
+  </section>
+</body>
+</html>
